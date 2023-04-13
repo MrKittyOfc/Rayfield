@@ -62,18 +62,18 @@ local Window = Rayfield:CreateWindow({
    },
    Discord = {
       Enabled = false,
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD.
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
    },
    KeySystem = false, -- Set this to true to use our key system
    KeySettings = {
-      Title = "Sirius Hub",
+      Title = "Untitled",
       Subtitle = "Key System",
-      Note = "Join the discord (discord.gg/sirius)",
-      FileName = "SiriusKey",
-      SaveKey = true,
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = "Hello"
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
 ```
@@ -221,11 +221,12 @@ local Input = Tab:CreateInput({
 local Dropdown = Tab:CreateDropdown({
    Name = "Dropdown Example",
    Options = {"Option 1","Option 2"},
-   CurrentOption = "Option 1",
+   CurrentOption = {"Option 1"},
+   MultipleOptions = false,
    Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Option)
    -- The function that takes place when the selected option is changed
-   -- The variable (Option) is a string for the value that the dropdown was changed to
+   -- The variable (Option) is a table of strings for the current selected options
    end,
 })
 ```
@@ -233,7 +234,7 @@ local Dropdown = Tab:CreateDropdown({
 ### Updating a Dropdown
 
 ```lua
-Dropdown:Set("Option 2") -- The new option value
+Dropdown:Set({"Option 2"}) -- The new list of options
 ```
 
 ## Check the value of an existing element
@@ -261,12 +262,6 @@ local Keybind = Tab:CreateKeybind({
 ```lua
 Keybind:Set("RightCtrl") -- Keybind (string)
 ```
-
----
-title: Textual elements in Rayfield
-description: Creating textual elements in Rayfield
-layout: ../layouts/MainLayout.astro
----
 
 ## Creating a Label
 
