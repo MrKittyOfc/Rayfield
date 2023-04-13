@@ -2,7 +2,7 @@
 
 This is the written documentation for Rayfield Interface Suite.
 
-Last updated for the Beta 7R release
+Last updated for the Beta 8 release
 
 ## Why choose Rayfield?
 
